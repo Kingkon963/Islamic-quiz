@@ -1,13 +1,57 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import {useRouter} from 'next/router'
 import Button from '@material-ui/core/Button'
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
+import {useCookies} from 'react-cookie'
+import {parseCookies} from '../helpers/'
 
 const placeholder = "Write Your Name Here";
 
+/*export async function getServerSideProps(context){
+  const cookies = parseCookies(context.req)
+  if (context.res) {
+    if (Object.keys(cookies).length === 0 && cookies.constructor === Object) {
+      context.res.writeHead(301, { Location: "/" })
+      context.res.end()
+    }
+  }
 
-export default function Home() {
+  return {
+    props: {
+      cookies: cookies && cookies,
+    }
+  }
+}*/
+
+
+export default function Home(data) {
   const [name, setName] = useState(placeholder)
+  const [cookie, setCookie] = useCookies(["name"])
+  const router = useRouter();
+
+  if(cookie.name){ //Bypass User if has setted a Name already
+    router.push('/dashboard')
+  }
+
+  function start(){
+    if(!cookie.name){
+      if(name && name !== placeholder){
+        setCookie("name", name, {
+          path: "/",
+          maxAge: 2592000, // 30 Days
+          sameSite: true
+        })
+      }
+    }
+
+    router.replace('/dashboard')
+  }
+
+
+  useEffect(() => {
+    
+  }, [])
 
   return (
     <div className="container">
@@ -26,15 +70,15 @@ export default function Home() {
         
         <div className="start-btn">
         {name!==placeholder && name?
-          <Link href="/dashboard">
+         
             <Button variant="contained"
             style={
               {padding: '.2em 3em',
               fontSize: '1.5em',
               outline: 'none'
-              }}>START
+              }} onClick={start}>START
             </Button>
-          </Link>
+   
         :
         <></>
         }
