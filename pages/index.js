@@ -1,8 +1,9 @@
 import Head from 'next/head'
+import Link from 'next/link'
 import Button from '@material-ui/core/Button'
 import {useState} from 'react'
 
-const placeholder = "Write Your Name";
+const placeholder = "Write Your Name Here";
 
 
 export default function Home() {
@@ -21,25 +22,21 @@ export default function Home() {
           <input type="text" className="bg-transparent border-0 input-box"
           placeholder={name} onChange={(e) => setName(e.target.value)}/>
         </div>
-        {name!==placeholder && name? <h3>আসসালামু আলায়কুম, <br />{name}</h3>:<></> }
+        {name!==placeholder && name? <h3>আসসালামু আলাইকুম, <br />{name}</h3>:<></> }
         
         <div className="start-btn">
         {name!==placeholder && name?
-          <Button variant="contained"
-          style={
-            {padding: '.2em 3em',
-             fontSize: '1.5em',
-             outline: 'none'
-            }}>START
-          </Button>
+          <Link href="/dashboard">
+            <Button variant="contained"
+            style={
+              {padding: '.2em 3em',
+              fontSize: '1.5em',
+              outline: 'none'
+              }}>START
+            </Button>
+          </Link>
         :
-        <Button variant="contained" disabled
-          style={
-            {padding: '.2em 3em',
-             fontSize: '1.5em',
-             outline: 'none'
-            }}>START
-        </Button>
+        <></>
         }
         </div>
         
