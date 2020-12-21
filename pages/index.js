@@ -24,13 +24,23 @@ export default function Home() {
         {name!==placeholder && name? <h3>আসসালামু আলায়কুম, <br />{name}</h3>:<></> }
         
         <div className="start-btn">
+        {name!==placeholder && name?
           <Button variant="contained"
           style={
             {padding: '.2em 3em',
              fontSize: '1.5em',
              outline: 'none'
-            }}>START</Button>
-
+            }}>START
+          </Button>
+        :
+        <Button variant="contained" disabled
+          style={
+            {padding: '.2em 3em',
+             fontSize: '1.5em',
+             outline: 'none'
+            }}>START
+        </Button>
+        }
         </div>
         
       </main>
