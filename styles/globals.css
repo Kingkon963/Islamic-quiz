@@ -19,3 +19,8 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.box{
+  background-color: #384658;
+  border: 1px solid #2680EB;
+}
