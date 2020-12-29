@@ -1,0 +1,46 @@
+import {useRouter} from 'next/router'
+
+
+function AvatarIcon(){
+    return(<svg xmlns="http://www.w3.org/2000/svg" width="17.558" height="23.904" viewBox="0 0 17.558 23.904">
+    <g id="Beard_Man" data-name="Beard Man" transform="translate(-339.221 -30.773)">
+      <g id="Ellipse_2" data-name="Ellipse 2" transform="translate(342 31)" fill="#fff" stroke="#707070" stroke-width="1">
+        <circle cx="6" cy="6" r="6" stroke="none"/>
+        <circle cx="6" cy="6" r="5.5" fill="none"/>
+      </g>
+      <path id="Path_3" data-name="Path 3" d="M784.755,54.646s-.786-12.524,8.2-12.187" transform="translate(-445)" fill="none" stroke="#707070" stroke-width="1"/>
+      <path id="Path_4" data-name="Path 4" d="M792.937,54.646s.786-12.524-8.2-12.187" transform="translate(-436.692)" fill="none" stroke="#707070" stroke-width="1"/>
+      <path id="Path_5" data-name="Path 5" d="M788.369,35.2s-.162.142.3.691c.65,2.945.447,2.463,2.052,3.392.65-4.347,4.672-2.884,4.367.122,1.361.061,1.909-1.848,2.133-3.514.447-.142.386-.63.487-.691,1.036,3.677-.467,5.891-4.489,9.181C786.927,40.544,787.7,35.648,788.369,35.2Z" transform="translate(-445)"/>
+      <path id="Path_6" data-name="Path 6" d="M791.513,39.528c1.827-.79,1.316-.47,2.947,0,.668-.235-.236-1.644-1.513-1.666C791.67,38.012,791.115,39.112,791.513,39.528Z" transform="translate(-445)" fill="#fff"/>
+      <path id="Path_7" data-name="Path 7" d="M788.552,33.008l9.222.325a5.012,5.012,0,0,0-4.693-2.559C789.567,30.794,788.552,33.008,788.552,33.008Z" transform="translate(-445)"/>
+    </g>
+  </svg>);
+}
+
+
+export default function Avatar(){
+    const router = useRouter()
+
+    return(
+        <>
+            <div className="avatar-div" onClick={() => router.push('/profile')}>
+                <AvatarIcon />
+            </div>
+            <style jsx>
+            {`
+                .avatar-div{
+                    border: 2px solid #2680EB;
+                    background-color: floralwhite;
+                    width: 35px;
+                    height: 35px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 50%;
+                    margin-left: auto;
+                }
+            `}
+            </style>
+        </>
+    )
+}
